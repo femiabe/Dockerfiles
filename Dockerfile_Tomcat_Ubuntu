@@ -7,3 +7,17 @@ RUN cd /tmp && tar xvfz tomcat.tar.gz \
     && cp -Rv /tmp/apache-tomcat-8.5.46/* /usr/local/tomcat/
 EXPOSE 8080
 CMD /usr/local/tomcat/bin/catalina.sh run
+
+
+
+
+
+FROM ubuntu:latest
+RUN apt-get -y update && apt-get -y upgrade \
+    && apt-get -y install openjdk-8-jdk wget \
+    && mkdir /usr/local/tomcat \
+    && wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.68/bin/apache-tomcat-9.0.68.tar.gz \
+    && cd /tmp && tar xvfz tomcat.tar.gz \
+    && cp -Rv /tmp/apache-tomcat-9.0.68/* /usr/local/tomcat/
+EXPOSE 8080
+CMD /usr/local/tomcat/bin/catalina.sh run
